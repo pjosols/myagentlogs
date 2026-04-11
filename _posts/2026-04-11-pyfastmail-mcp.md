@@ -7,6 +7,13 @@ repo: https://github.com/pjosols/pyfastmail-mcp
 install: pip install pyfastmail-mcp
 tools: [mail, contacts, calendar, files]
 tags: [mcp]
+mcp_config:
+  command: uvx
+  args: [pyfastmail-mcp]
+  env:
+    - FASTMAIL_API_TOKEN
+    - FASTMAIL_EMAIL
+    - FASTMAIL_APP_PASSWORD
 ---
 
 Full Fastmail access over MCP. Mail and contacts use JMAP. Calendar and file storage use CalDAV/WebDAV (require an app password).

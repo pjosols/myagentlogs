@@ -1,4 +1,4 @@
 ---
 permalink: /tags/mcp.json
 ---
-[{% for post in site.tags.mcp %}{"title":"{{ post.title }}","url":"{{ post.url | absolute_url }}","date":"{{ post.date | date: "%Y-%m-%d" }}","description":"{{ post.description }}","tags":{{ post.tags | jsonify }}{% if post.repo %},"repo":"{{ post.repo }}"{% endif %}{% if post.install %},"install":"{{ post.install }}"{% endif %}{% if post.tools %},"tools":{{ post.tools | jsonify }}{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]
+[{% for post in site.tags.mcp %}{"title":"{{ post.title }}","url":"{{ post.url | absolute_url }}","date":"{{ post.date | date: "%Y-%m-%d" }}","description":"{{ post.description }}","tags":{{ post.tags | jsonify }}{% if post.repo %},"repo":"{{ post.repo }}"{% endif %}{% if post.install %},"install":"{{ post.install }}"{% endif %}{% if post.tools %},"tools":{{ post.tools | jsonify }}{% endif %}{% if post.mcp_config %},"mcp_config":{"command":"{{ post.mcp_config.command }}","args":{{ post.mcp_config.args | jsonify }},"env":{{ post.mcp_config.env | jsonify }}}{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]

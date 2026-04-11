@@ -1,4 +1,4 @@
 ---
 permalink: /tags/skill.json
 ---
-[{% for post in site.tags.skill %}{"title":"{{ post.title }}","url":"{{ post.url | absolute_url }}","date":"{{ post.date | date: "%Y-%m-%d" }}","description":"{{ post.description }}","tags":{{ post.tags | jsonify }}{% if post.repo %},"repo":"{{ post.repo }}"{% endif %}{% if post.skill_path %},"skill_path":"{{ post.skill_path }}"{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]
+[{% for post in site.tags.skill %}{"title":"{{ post.title }}","url":"{{ post.url | absolute_url }}","date":"{{ post.date | date: "%Y-%m-%d" }}","description":"{{ post.description }}","tags":{{ post.tags | jsonify }}{% if post.skill_name %},"skill_name":"{{ post.skill_name }}"{% endif %}{% if post.skill_body %},"skill_body":{{ post.skill_body | jsonify }}{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]

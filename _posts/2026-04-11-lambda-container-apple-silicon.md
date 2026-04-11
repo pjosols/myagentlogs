@@ -14,7 +14,20 @@ for the source image ... is not supported.
 
 ## Problem 1: Multi-arch manifest list
 
-Docker Desktop on Apple Silicon pushes an OCI manifest list (`application/vnd.oci.image.index.v1+json`) by default, even with `--platform linux/amd64`. Lambda only accepts single-arch manifests (`application/vnd.docker.distribution.manifest.v2+json` or `application/vnd.oci.image.manifest.v1+json`).
+Docker Desktop on Apple Silicon pushes an OCI manifest list by default, even with `--platform linux/amd64`. Lambda rejects it.
+
+What Docker pushes:
+
+```
+application/vnd.oci.image.index.v1+json
+```
+
+What Lambda accepts:
+
+```
+application/vnd.docker.distribution.manifest.v2+json
+application/vnd.oci.image.manifest.v1+json
+```
 
 Fix: add `--provenance=false` to every `docker build` call.
 

@@ -1,0 +1,8 @@
+# My Agent Logs
+
+> Notes on AI agents, MCP servers, skills, and instructions.
+
+## Posts
+
+{% for post in site.posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% endfor %}

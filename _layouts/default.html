@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f8f9; --fg: #2a2b2e; --dim: #65666a; --mute: #9ca3b0;
+      --rule: #dfe0e3;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1b1e; --fg: #c9ccd1; --dim: #6e7179; --mute: #45474d; --rule: #2e3035;
+      }
+    }
+    ::selection { background: var(--fg); color: var(--bg); }
+    html, body {
+      background: var(--bg); color: var(--fg); font-family: var(--font);
+      font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    body { padding: 48px; min-height: 100vh; display: flex; flex-direction: column; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 32px; border-bottom: 1px solid var(--rule); margin-bottom: 64px;
+    }
+    .site-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; color: var(--fg);
+    }
+    main { flex: 1; max-width: 640px; }
+    h1 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.2;
+      letter-spacing: -0.02em; margin: 0 0 48px;
+    }
+    .meta {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--mute); font-weight: 500; margin-bottom: 32px;
+    }
+    .content h2 { font-size: 20px; font-weight: 600; margin: 40px 0 16px; }
+    .content h3 { font-size: 17px; font-weight: 600; margin: 32px 0 12px; }
+    .content p { margin-bottom: 16px; color: var(--dim); }
+    .content a { color: var(--fg); }
+    .content ul, .content ol { margin: 0 0 16px 20px; color: var(--dim); }
+    .content code {
+      font-size: 15px; background: var(--rule); padding: 2px 6px; border-radius: 3px;
+    }
+    .content pre { margin-bottom: 16px; padding: 16px; background: var(--rule); overflow-x: auto; border-radius: 3px; }
+    .content pre code { background: none; padding: 0; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li {
+      padding: 16px 0; border-bottom: 1px solid var(--rule);
+    }
+    .post-list a { text-decoration: none; font-weight: 600; }
+    .post-list .date {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--mute); font-weight: 500;
+    }
+    footer {
+      margin-top: auto; padding-top: 48px; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute);
+    }
+    @media (max-width: 600px) {
+      body { padding: 24px; }
+      nav { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="site-name">{{ site.title }}</a>
+  </nav>
+  <main>
+    {{ content }}
+  </main>
+  <footer>&copy; 2026 {{ site.title }}</footer>
+</body>
+</html>

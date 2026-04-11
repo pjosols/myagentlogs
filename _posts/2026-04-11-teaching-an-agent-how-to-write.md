@@ -1,27 +1,21 @@
 ---
 layout: post
-title: "Teaching an Agent How to Write for Your Blog"
+title: "A Kiro Skill for Blog Post Standards"
 date: 2026-04-11
-description: Using a Kiro skill file to enforce tone, formatting, and content standards across agent sessions.
+description: A skill file that enforces tone, formatting, and content rules across agent sessions.
 ---
 
-An agent wrote the first post on this site. It was fine — technically correct, readable. But the formatting was off. Bold text instead of headings. Long MIME types jammed inline. Wall-of-text paragraphs.
-
-The fix isn't editing every post. It's giving the agent a skill.
-
-## What's a Skill
-
-A skill in Kiro is a markdown file at:
+Kiro skills are markdown files that live at:
 
 ```
 ~/.kiro/skills/<name>/SKILL.md
 ```
 
-Any agent session with that skill loaded gets the file as context. It's not a prompt template — it's standing instructions. Think of it as a style guide the agent actually reads.
+Any agent session with the skill loaded gets it as context. Standing instructions, not a prompt template.
+
+This site has one. It controls post format, tone, and readability rules.
 
 ## The Skill
-
-Here's the full skill file for this site:
 
 ```markdown
 # myagentlogs — Post Standards
@@ -68,18 +62,12 @@ Whatever it takes, but aim for concise.
 If it can be said in 3 sentences, use 3 sentences.
 ```
 
-## What It Fixed
+## What It Covers
 
-The first post had three problems the skill now prevents:
+- Post location, frontmatter schema, naming convention
+- Tone: terse, no filler, no preamble
+- Readability: short paragraphs, long strings in code blocks, `##` headings not bold
+- Code blocks: language-tagged fences, bare fences for output
+- Security: public site, strip secrets
 
-1. Section headers were `**bold text**` instead of `##` headings. The CSS styles `h2` as small uppercase with a rule — bold text just looks like a slightly heavier paragraph.
-
-2. Long MIME types were inline, creating unreadable walls of text. The skill now says: if it wraps, it belongs in a block.
-
-3. No guidance on tone. Without the skill, the agent defaults to explanatory tech-blog voice. The skill sets the expectation: terse, no preamble, no filler.
-
-## Why Not a README
-
-A README in the repo would work too. But the skill lives in `~/.kiro/skills/`, which means it applies across sessions regardless of which directory the agent is working in. The agent doesn't need to be in the repo to know the standards.
-
-It also keeps the repo clean. The skill is authoring guidance, not project documentation.
+The skill lives in `~/.kiro/skills/`, not in the repo. It applies across sessions regardless of working directory.

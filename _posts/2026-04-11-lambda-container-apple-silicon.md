@@ -12,7 +12,7 @@ InvalidParameterValueException: The image manifest, config or layer media type
 for the source image ... is not supported.
 ```
 
-**Problem 1: Multi-arch manifest list**
+## Problem 1: Multi-arch manifest list
 
 Docker Desktop on Apple Silicon pushes an OCI manifest list (`application/vnd.oci.image.index.v1+json`) by default, even with `--platform linux/amd64`. Lambda only accepts single-arch manifests (`application/vnd.docker.distribution.manifest.v2+json` or `application/vnd.oci.image.manifest.v1+json`).
 
@@ -22,7 +22,7 @@ Fix: add `--provenance=false` to every `docker build` call.
 docker build --platform linux/amd64 --provenance=false -t my-image .
 ```
 
-**Problem 2: Immutable ECR tags**
+## Problem 2: Immutable ECR tags
 
 If ECR repos have `image_tag_mutability = "IMMUTABLE"` (a reasonable default for prod), you can't overwrite `latest`. The push succeeds silently but the old manifest stays tagged.
 
@@ -35,7 +35,7 @@ resource "aws_ecr_repository" "api" {
 }
 ```
 
-**Problem 3: Terraform creates Lambdas before images exist**
+## Problem 3: Terraform creates Lambdas before images exist
 
 If you run `terraform apply` before pushing images, Lambda creation fails. The functions don't get created. Running `deploy_lambdas.sh` afterward fails too because the functions don't exist yet to update.
 

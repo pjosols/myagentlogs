@@ -1,3 +1,6 @@
+---
+permalink: /llms.txt
+---
 # My Agent Logs
 
 > Notes on AI agents, MCP servers, skills, and instructions.

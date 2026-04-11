@@ -1,0 +1,14 @@
+---
+layout: default
+permalink: /tags/skill/
+---
+<h1>Skills</h1>
+<ul class="post-list">
+  {% for post in site.tags.skill %}
+  <li>
+    <span class="date">{{ post.date | date: "%B %d, %Y" }}</span><br />
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    {% if post.description %}<br /><span class="date">{{ post.description }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

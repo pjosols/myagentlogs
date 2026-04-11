@@ -1,19 +1,33 @@
 ---
 layout: post
-title: "A Kiro Skill for Blog Post Standards"
+title: "A Skill File for Blog Post Standards"
 date: 2026-04-11
-description: A skill file that enforces tone, formatting, and content rules across agent sessions.
+description: A skill file that enforces tone, formatting, and content rules for agents writing posts.
+tags: [skill]
 ---
 
-Kiro skills are markdown files that live at:
+A skill is a markdown file at:
 
 ```
 ~/.kiro/skills/<name>/SKILL.md
 ```
 
-Any agent session with the skill loaded gets it as context. Standing instructions, not a prompt template.
+Any agent session with the skill loaded gets it as context. It's standing instructions — tone, formatting, structure, constraints.
 
-This site has one. It controls post format, tone, and readability rules.
+This site has one at:
+
+```
+~/.kiro/skills/myagentlogs/SKILL.md
+```
+
+## What It Controls
+
+- **Post location**: absolute path to the repo's `_posts/` directory, so agents don't write files to the wrong place
+- **Frontmatter schema**: `layout`, `title`, `date`, `description`
+- **Tone**: terse, no hedging, no intros, no sign-offs, no "we" voice, no editorial
+- **Readability**: short paragraphs, long strings in code blocks not inline, `##` headings not bold
+- **Code blocks**: language-tagged fences for code, bare fences for output/errors
+- **Security**: public site, strip secrets
 
 ## The Skill
 
@@ -31,11 +45,14 @@ Lean toward agents, MCP, skills, tooling.
 ## Tone
 - Terse. Direct. No hedging.
 - No intro sentences ("In this post, we'll explore...")
+- No sign-off sentences ("That's the point.", "And that's it.")
 - No filler, no hype, no personality performance
+- No "we" voice. No narrative framing. No opinion sections.
+- State what something doesn't do. Don't editorialize about tradeoffs.
 - Write like notes to a future self who already knows the context
 
 ## Post Format
-File: _posts/YYYY-MM-DD-slug.md
+File: ~/Projects/myagentlogs/_posts/YYYY-MM-DD-slug.md
 
 Frontmatter:
   layout: post
@@ -62,12 +79,35 @@ Whatever it takes, but aim for concise.
 If it can be said in 3 sentences, use 3 sentences.
 ```
 
-## What It Covers
+## Layouts
 
-- Post location, frontmatter schema, naming convention
-- Tone: terse, no filler, no preamble
-- Readability: short paragraphs, long strings in code blocks, `##` headings not bold
-- Code blocks: language-tagged fences, bare fences for output
-- Security: public site, strip secrets
+The site has three layouts:
 
-The skill lives in `~/.kiro/skills/`, not in the repo. It applies across sessions regardless of working directory.
+- `post` — standard blog post. Date, title, content.
+- `mcp` — MCP server registry entry. Adds a metadata card with repo, install command, and tool list. Use with `tags: [mcp]`.
+- `default` — base layout. Nav, main, footer.
+
+## Tags
+
+Posts can be tagged in frontmatter:
+
+```yaml
+tags: [mcp, skill]
+```
+
+Each tag gets a static HTML page and a JSON endpoint:
+
+```
+/tags/mcp/       → HTML listing
+/tags/mcp.json   → structured JSON for agents
+```
+
+The JSON includes all frontmatter fields — title, description, repo, install, tools — so agents can discover and evaluate content without parsing HTML.
+
+## llms.txt
+
+```
+/llms.txt
+```
+
+Auto-generated index of all posts with title, URL, and description. Agents read this to discover what's on the site.

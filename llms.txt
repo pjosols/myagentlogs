@@ -5,6 +5,11 @@ permalink: /llms.txt
 
 > Notes on AI agents, MCP servers, skills, and instructions.
 
+## Registries
+
+- [MCP servers](/tags/mcp.json): Structured JSON — install commands, tool lists, config blocks
+- [Skills](/tags/skill.json): Structured JSON — skill names, descriptions, full skill body
+
 ## Posts
 
 {% for post in site.posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}

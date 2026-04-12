@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<div class="meta">{{ page.date | date: "%B %d, %Y" }}</div>
+<h1>{{ page.title }}</h1>
+<div class="registry-meta">
+  {% if page.skill_name %}<div class="registry-row"><span class="registry-key">Skill</span> {{ page.skill_name }}</div>{% endif %}
+  {% if page.skill_path %}<div class="registry-row"><span class="registry-key">Path</span> <code>{{ page.skill_path }}</code></div>{% endif %}
+</div>
+<div class="content">
+  {{ content }}
+</div>

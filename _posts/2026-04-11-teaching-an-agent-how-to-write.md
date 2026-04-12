@@ -1,10 +1,11 @@
 ---
-layout: post
+layout: skill
 title: "Blog post standards skill"
 date: 2026-04-11
 description: A skill file that enforces tone, formatting, and content rules for agents writing posts.
 tags: [skill]
 skill_name: myagentlogs
+skill_path: ~/.kiro/skills/myagentlogs/SKILL.md
 skill_body: |
   # myagentlogs — Post Standards
 

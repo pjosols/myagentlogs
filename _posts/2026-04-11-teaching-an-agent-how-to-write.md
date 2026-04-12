@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Blog Post Standards Skill"
+title: "Blog post standards skill"
 date: 2026-04-11
 description: A skill file that enforces tone, formatting, and content rules for agents writing posts.
 tags: [skill]

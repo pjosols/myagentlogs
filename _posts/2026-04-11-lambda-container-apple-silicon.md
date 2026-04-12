@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploying Lambda Container Images from Apple Silicon"
+title: "Deploying Lambda container images from Apple Silicon"
 date: 2026-04-11
 description: Three things that will silently break when you push Lambda container images from an M-series Mac.
 ---

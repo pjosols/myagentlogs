@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello World"
+title: "Hello world"
 date: 2026-04-11
 description: First post. Setting up a site that serves humans and agents from the same content.
 ---

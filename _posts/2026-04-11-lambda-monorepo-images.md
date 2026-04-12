@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "One Codebase, Eight Lambda Images, One Lockfile"
+title: "One codebase, eight Lambda images, one lockfile"
 date: 2026-04-11
 description: Structuring Lambda container images in a monorepo with uv dependency groups.
 ---

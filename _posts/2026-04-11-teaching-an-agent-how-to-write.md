@@ -7,6 +7,16 @@ tags: [skill]
 skill_name: myagentlogs
 skill_path: ~/.kiro/skills/myagentlogs/SKILL.md
 skill_body: |
+  ---
+  name: myagentlogs
+  description: Enforces tone, formatting, and content rules for blog posts on myagentlogs.com. Use when writing or reviewing posts for the site.
+  license: MIT
+  compatibility: Any agent with file write access
+  metadata:
+    author: pjosols
+    version: "1.0"
+  ---
+
   # myagentlogs — Post Standards
 
   ## Site
@@ -27,7 +37,7 @@ skill_body: |
   - Write like notes to a future self who already knows the context
 
   ## Post Format
-  File: ~/Projects/myagentlogs/_posts/YYYY-MM-DD-slug.md
+  File: _posts/YYYY-MM-DD-slug.md
 
   Frontmatter:
     layout: post
@@ -36,6 +46,10 @@ skill_body: |
     description: One sentence. What this post covers.
 
   Start with the thing itself — no preamble.
+
+  ## Titles
+  Sentence case. Only the first letter capitalized, unless a word is
+  a proper noun or product name.
 
   ## Readability
   - Break up dense paragraphs. Long identifiers, URLs, MIME types
@@ -62,17 +76,44 @@ A skill is a markdown file at:
 
 Any agent session with the skill loaded gets it as context — standing instructions for tone, formatting, structure, constraints.
 
+The [Agent Skills spec](https://agentskills.io/specification) defines a standard frontmatter format for skill files:
+
+```yaml
+---
+name: myagentlogs
+description: Enforces tone, formatting, and content rules for blog posts on myagentlogs.com.
+license: MIT
+compatibility: Any agent with file write access
+metadata:
+  author: pjosols
+  version: "1.0"
+---
+```
+
+Fields: `name` (required, lowercase + hyphens), `description` (required), `license`, `compatibility`, `metadata`, `allowed-tools`.
+
 ## What it controls
 
 - Post location, frontmatter schema, naming convention
 - Tone: terse, no filler, no preamble, no "we" voice, no editorial
 - Readability: short paragraphs, long strings in code blocks, `##` headings not bold
+- Titles: sentence case
 - Code blocks: language-tagged fences, bare fences for output
 - Security: public site, strip secrets
 
 ## The skill
 
 ```markdown
+---
+name: myagentlogs
+description: Enforces tone, formatting, and content rules for blog posts on myagentlogs.com. Use when writing or reviewing posts for the site.
+license: MIT
+compatibility: Any agent with file write access
+metadata:
+  author: pjosols
+  version: "1.0"
+---
+
 # myagentlogs — Post Standards
 
 ## Site
@@ -126,10 +167,11 @@ If it can be said in 3 sentences, use 3 sentences.
 
 ## Layouts
 
-The site has three layouts:
+The site has four layouts:
 
 - `post` — standard blog post
 - `mcp` — MCP server registry entry with metadata card
+- `skill` — skill registry entry with metadata card
 - `default` — base layout
 
 ## Tags

@@ -7,6 +7,8 @@ layout: default
   {% if page.repo %}<div class="registry-row"><span class="registry-key">Repo</span> <a href="{{ page.repo }}">{{ page.repo }}</a></div>{% endif %}
   {% if page.install %}<div class="registry-row"><span class="registry-key">Install</span> <code>{{ page.install }}</code></div>{% endif %}
   {% if page.tools %}<div class="registry-row"><span class="registry-key">Tools</span> {{ page.tools | join: ", " }}</div>{% endif %}
+  {% if page.skill_name %}<div class="registry-row"><span class="registry-key">Skill</span> {{ page.skill_name }}</div>{% endif %}
+  {% if page.skill_path %}<div class="registry-row"><span class="registry-key">Path</span> <code>{{ page.skill_path }}</code></div>{% endif %}
 </div>
 <div class="content">
   {{ content }}

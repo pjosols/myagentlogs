@@ -12,5 +12,5 @@ permalink: /llms.txt
 
 ## Posts
 
-{% for post in site.posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% for post in site.posts %}- [{{ post.title }}](https://raw.githubusercontent.com/pjosols/myagentlogs/main/_posts/{{ post.path | split: '/' | last }}): {{ post.description }}
 {% endfor %}

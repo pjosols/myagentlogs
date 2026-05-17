@@ -1,5 +1,5 @@
 ---
-layout: mcp
+layout: registry
 title: "pyfastmail-mcp"
 date: 2026-04-11
 description: MCP server for Fastmail — email, contacts, calendars, file storage via JMAP, CalDAV, and WebDAV.

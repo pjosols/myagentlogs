@@ -4,3 +4,7 @@ _site/
 .jekyll-cache/
 .sass-cache/
 .DS_Store
+.claude/
+.impeccable/
+.github/skills/
+PRODUCT.md

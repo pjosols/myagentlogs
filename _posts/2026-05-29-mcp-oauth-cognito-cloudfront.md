@@ -173,4 +173,6 @@ class CognitoTokenVerifier(TokenVerifier):
 }
 ```
 
-Claude Desktop doesn't support remote HTTP MCP servers natively. `mcp-remote` is the standard proxy. On first connection it opens a browser for auth. The token is cached and refreshed against the refresh token (Cognito default: 30 days).
+Claude Desktop has a native "Add Connector" UI for remote HTTP MCP servers, but as of mid-2026 it has a [known bug](https://github.com/anthropics/claude-ai-mcp/issues/46) where the token exchange never completes after the OAuth redirect for third-party auth servers. The config file (`claude_desktop_config.json`) doesn't accept a `url` field at all — only command-based servers work there.
+
+`mcp-remote` is the workaround for both. On first connection it opens a browser for auth. The token is cached and refreshed against the refresh token (Cognito default: 30 days).

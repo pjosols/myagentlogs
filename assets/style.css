@@ -95,7 +95,7 @@ nav {
 
 /* ── Layout ── */
 
-main { flex: 1; max-width: 960px; }
+main { flex: 1; max-width: 800px; }
 
 /* ── Accessibility ── */
 

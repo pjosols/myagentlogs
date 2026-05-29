@@ -176,7 +176,13 @@ h1 {
 
 /* ── Post content ── */
 
-.content { max-width: 65ch; }
+.content p,
+.content h2,
+.content h3,
+.content h4,
+.content ul,
+.content ol,
+.content blockquote { max-width: 65ch; }
 
 .content p {
   margin-bottom: var(--s4);
@@ -267,6 +273,25 @@ h1 {
   border-radius: 3px;
 }
 
+/* Rouge .highlight wrapper (language-tagged fenced blocks) */
+.content .highlight {
+  margin: var(--s3) 0 var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.content .highlight pre {
+  margin: 0;
+  padding: var(--s4) var(--s5);
+  background: none;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* Plain pre (no language tag) */
 .content pre {
   margin: var(--s3) 0 var(--s5);
   padding: var(--s4) var(--s5);
@@ -276,7 +301,8 @@ h1 {
   overflow-x: auto;
 }
 
-.content pre code {
+.content pre code,
+.content .highlight code {
   font-size: 13px;
   background: none;
   padding: 0;
@@ -325,6 +351,87 @@ footer {
   color: var(--muted);
   text-transform: none;
   letter-spacing: 0;
+}
+
+/* ── Syntax highlight (Rouge, amber-ink theme) ── */
+/*
+  Keywords:  brand amber
+  Strings:   earthy green
+  Numbers:   muted blue
+  Builtins:  teal
+  Comments:  warm gray (italic)
+  Operators: near-ink
+  Default:   ink
+*/
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs  { color: oklch(0.50 0.012 80); font-style: italic; }       /* comments */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt  { color: oklch(0.43 0.145 78); font-weight: 600; }         /* keywords — amber */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .se,
+.highlight .si,
+.highlight .sx  { color: oklch(0.38 0.10 145); }                           /* strings — green */
+.highlight .mi,
+.highlight .mf,
+.highlight .mh,
+.highlight .mo  { color: oklch(0.40 0.09 225); }                           /* numbers — blue */
+.highlight .nb  { color: oklch(0.36 0.08 200); }                           /* builtins — teal */
+.highlight .nc,
+.highlight .nf  { color: oklch(0.175 0.018 80); }                          /* class/function — ink */
+.highlight .o,
+.highlight .ow  { color: oklch(0.35 0.012 80); }                           /* operators */
+.highlight .p   { color: oklch(0.40 0.010 80); }                           /* punctuation */
+.highlight .gd  { color: oklch(0.42 0.18 25);  background: oklch(0.95 0.02 25); }   /* diff − */
+.highlight .gi  { color: oklch(0.36 0.10 145); background: oklch(0.96 0.02 145); }  /* diff + */
+.highlight .gh,
+.highlight .gu  { color: oklch(0.43 0.145 78); font-weight: 700; }         /* headings */
+.highlight .err { color: oklch(0.42 0.18 25); }                            /* errors */
+
+@media (prefers-color-scheme: dark) {
+  .highlight .c,
+  .highlight .c1,
+  .highlight .cm,
+  .highlight .cs  { color: oklch(0.55 0.012 80); font-style: italic; }
+  .highlight .k,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt  { color: oklch(0.784 0.144 80); font-weight: 600; }
+  .highlight .s,
+  .highlight .s1,
+  .highlight .s2,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .se,
+  .highlight .si,
+  .highlight .sx  { color: oklch(0.72 0.12 145); }
+  .highlight .mi,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mo  { color: oklch(0.72 0.10 225); }
+  .highlight .nb  { color: oklch(0.70 0.09 200); }
+  .highlight .nc,
+  .highlight .nf  { color: oklch(0.920 0.010 80); }
+  .highlight .o,
+  .highlight .ow  { color: oklch(0.75 0.010 80); }
+  .highlight .p   { color: oklch(0.68 0.010 80); }
+  .highlight .gd  { color: oklch(0.75 0.15 25);  background: oklch(0.22 0.04 25); }
+  .highlight .gi  { color: oklch(0.72 0.12 145); background: oklch(0.22 0.04 145); }
+  .highlight .gh,
+  .highlight .gu  { color: oklch(0.784 0.144 80); font-weight: 700; }
+  .highlight .err { color: oklch(0.72 0.18 25); }
 }
 
 /* ── Responsive ── */
